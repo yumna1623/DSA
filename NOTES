@@ -1,0 +1,11 @@
+BUBBLE SORT:
+    Compare the first pair of adjacent elements in the array.
+
+Selection Sort:
+    the algorithm finds the smallest element in the unsorted portion of the array and swaps it with the first unsorted element. The swapping happens once per iteration of the outer loop.
+
+insertion Sort:
+    start with the first element as sorted. Then, take the next element and insert it into the sorted portion of the array. The process continues until the entire array is sorted.
+
+Quick Sort:
+    Select a 'pivot' element from the array and partition the other elements into two sub-arrays , according to whether they are less than or greater than the pivot. The sub-arrays are  then recursively sorted.
