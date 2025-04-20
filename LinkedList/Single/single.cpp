@@ -7,7 +7,7 @@ struct Node
     int data;
     Node *next;
 };
-Node *list = NULL;
+Node *head = NULL;
 int current;
 
 void insert()
@@ -16,13 +16,13 @@ void insert()
     cout << "Enter";
     cin >> ptr->data;
     ptr->next = nullptr;
-    if (list == NULL)
+    if (head == NULL)
     {
-        list = ptr;
+        head = ptr;
     }
     else
     {
-        Node *current = list;
+        Node *current = head;
         while (current->next != NULL)
         {
             current = current->next;
@@ -33,7 +33,7 @@ void insert()
 
 void print()
 {
-    Node *current = list;
+    Node *current = head;
     while (current != NULL)
     {
         cout << current->data;
@@ -48,16 +48,16 @@ void Delete(){
     cout<<"Enter value to Delete ";
     cin>>toDelete;
 
-    Node*current= list;
-    if (list->data == toDelete){
-        Node*temp=list;
-        Node*current=list;
-        list = list->next;
+    Node*current= head;
+    if (head->data == toDelete){
+        Node*temp=head;
+        Node*current=head;
+        head = head->next;
         free(temp);
     }
     else{
-        Node*prev = list;
-        current=list->next;
+        Node*prev = head;
+        current=head->next;
         while(current!=NULL){
             if(current->data==toDelete){
                 prev->next=current->next;
@@ -77,7 +77,7 @@ int Search(){
     cout<<"Enter value to search ";
     cin>>toSearch;
 
-    Node*current= list;
+    Node*current= head;
     while(current!=NULL){
         if(current->data == toSearch){
             cout<<"value found";

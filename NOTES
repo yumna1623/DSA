@@ -9,3 +9,4 @@ insertion Sort:
 
 Quick Sort:
     Select a 'pivot' element from the array and partition the other elements into two sub-arrays , according to whether they are less than or greater than the pivot. The sub-arrays are  then recursively sorted.
+
