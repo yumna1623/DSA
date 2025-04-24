@@ -43,34 +43,62 @@ int TotalNode(){
     }
     return count;
 }
-Node* min(Node* head) {
-    Node* current = head;
+Node* moveMinToFront(Node* head) {
+    if (!head || !head->next) return head;
+
     Node* minNode = head;
-    while (current != NULL) {
+    Node* current = head;
+
+    while (current) {
         if (current->data < minNode->data) {
             minNode = current;
         }
         current = current->next;
     }
-    Node*temp = minNode;
-    minNode = list;
-    list = temp;
 
-    
-    
+    if (minNode == head) return head;
+
+    if (minNode->prev) minNode->prev->next = minNode->next;
+    if (minNode->next) minNode->next->prev = minNode->prev;
+
+    minNode->prev = nullptr;
+    minNode->next = head;
+    head->prev = minNode;
+    head = minNode;
+
+    return head;
 }
-    
-Node* max(Node* head) {
-    Node* current = head;
+Node* moveMaxToEnd(Node* head) {
+    if (head == NULL) return head;
+
     Node* maxNode = head;
-    while (current != NULL) {
+    Node* current = head;
+
+    while (current) {
         if (current->data > maxNode->data) {
             maxNode = current;
         }
         current = current->next;
     }
-    return maxNode;
+
+    if (maxNode->next == nullptr) return head;
+
+    if (maxNode->prev) maxNode->prev->next = maxNode->next;
+    else head = maxNode->next;
+    if (maxNode->next) maxNode->next->prev = maxNode->prev;
+
+    Node* tail = head;
+    while (tail->next) {
+        tail = tail->next;
+    }
+
+    tail->next = maxNode;
+    maxNode->prev = tail;
+    maxNode->next = nullptr;
+
+    return head;
 }
+
 void Delete(){
     Node *current = list;
     Node*prev=NULL;
@@ -110,7 +138,7 @@ void print()
     Node *current = list;
     do{
         cout << current->data;
-        cout << "\n";
+        cout << " ";
         current = current->next;
         cout << " ";
     }
@@ -164,8 +192,13 @@ int main()
         // MiddleNode();
         // cout << "\n";
         cout<<"MInimum Node in first place: "<<endl;
-        min(list);
+        list = moveMinToFront(list);
         print();
+        cout << "\n";
+        cout<<"Maximum Node in last place: "<<endl;
+        list = moveMaxToEnd(list);
+        print();
+        
 
 
         
