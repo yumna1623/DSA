@@ -136,15 +136,13 @@ void Delete(){
 void print()
 {
     Node *current = list;
-    do{
-        cout << current->data;
-        cout << " ";
+    while (current != NULL) {
+        cout << current->data << " ";
         current = current->next;
-        cout << " ";
     }
-    while (current != NULL);
-    
+    cout << "\n";
 }
+
 int MiddleNode(){
     int total  = TotalNode();
     int mid = total/2;
