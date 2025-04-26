@@ -109,5 +109,4 @@ int main() {
     findPredecessorAndSuccessor(root, target);
     displayPredecessorAndSuccessor();
 
-    return 0;
 }
