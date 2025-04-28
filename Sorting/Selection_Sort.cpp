@@ -1,10 +1,12 @@
 #include<iostream>
 using namespace std;
-int main(){
-    int min;
+
+void selectionSort(){
+
     int arr[5] ={ 76,45,32,12,1};	// 1 12 32 45 76 
+    int size = 5;
     for(int i=0; i<5; i++){
-                min = i;
+        int min = i;
         for (int j = i+1; j < 5; j++)
         {
             if(arr[i]>arr[j]){
@@ -18,6 +20,13 @@ int main(){
     for(int i=0; i<5; i++){
         cout<<arr[i]<<" ";
     }
+
+}
+
+int main(){
+    
+
+selectionSort();
 }
     
     

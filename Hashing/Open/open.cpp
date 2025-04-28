@@ -1,3 +1,7 @@
+//mo collision
+
+
+
 #include <iostream>
 using namespace std;
 
@@ -17,23 +21,23 @@ void insert(int size, Node *array[])
     int key;
     cin >> key;
     int index = HashFunction(key, size);
-    if (array[index] == nullptr)
+    if (array[index] == NULL)
     {
         Node *newNode = new Node();
         newNode->data = key;
-        newNode->next = nullptr;
+        newNode->next = NULL;
         array[index] = newNode;
     }
     else
     {
         Node *current = array[index];
-        while (current->next != nullptr)
+        while (current->next != NULL)
         {
             current = current->next;
         }
         Node *newNode = new Node();
         newNode->data = key;
-        newNode->next = nullptr;
+        newNode->next = NULL;
         current->next = newNode;
     }
 }
@@ -42,7 +46,7 @@ void print(int size, Node *array[]){
     {
         Node *current = array[i];
         cout << "Index " << i << ": ";
-        while (current != nullptr)
+        while (current != NULL)
         {
             cout << current->data << " ";
             current = current->next;
@@ -64,7 +68,7 @@ int main()
     cout << "Enter the size of the hash table: ";
     cin >> size;
 
-    Node *array[size] = {nullptr};
+    Node *array[size] = {NULL};
 
     int choice;
     do

@@ -24,17 +24,17 @@ int setPivot(int arr[], int low, int high) {
     return l;
 }
 
-void Qfunc(int arr[], int low, int high) {
+void QuickSort(int arr[], int low, int high) {
     if (low < high) {
         int pi = setPivot(arr, low, high);
-        Qfunc(arr, low, pi - 1);   // left partition
-        Qfunc(arr, pi+1, high);    // right partition
+        QuickSort(arr, low, pi - 1);   // left partition
+        QuickSort(arr, pi, high);    // right partition
     }
 }
 int main() {
     int arr[5] = {43, 23, 12, 45, 27}; // 12 23 27 43 45
     int size = 5;
-    Qfunc(arr, 0, size - 1);
+    QuickSort(arr, 0, size - 1);
 
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";

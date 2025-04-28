@@ -90,16 +90,6 @@ void insert(int size, int array[])
 
         
         Search(size, array);
-        // int choice;
-        // cout<<"Enter 1 to insert and 2 to search";
-        // cin>>choice;
-        // switch (choice)
-        // {
-        // case1:
-
-        //     break;
-
-        // default:
-        //     break;
-        // }
+        
+        
     }

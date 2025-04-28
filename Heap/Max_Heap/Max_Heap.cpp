@@ -1,3 +1,8 @@
+
+
+
+// In a Max-Heap, the parent node is always greater than or equal to its children.
+
 #include <iostream>
 using namespace std;
 
@@ -46,8 +51,6 @@ void deleteMax() {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         int largest = i;
-
-
 
         if (left < heapSize && heap[left] > heap[largest]) {
             largest = left;
