@@ -1,15 +1,15 @@
 #include <iostream>
 using namespace std;
 
-struct BstNode {
+struct BtNode {
     float data;
-    BstNode *left;
-    BstNode *right;
+    BtNode *left;
+    BtNode *right;
 };
 
-BstNode* Insert(BstNode* root, float value) {
+BtNode* Insert(BtNode* root, float value) {
     if (root == NULL) {
-        BstNode* newNode = new BstNode();
+        BtNode* newNode = new BtNode();
         newNode->data = value;
         newNode->left = NULL;
         newNode->right = NULL;
@@ -29,7 +29,7 @@ BstNode* Insert(BstNode* root, float value) {
     return root;
 }
 
-bool Search(BstNode* root, float toSearch) {
+bool Search(BtNode* root, float toSearch) {
     if (root == NULL) {
         return false;
     }
@@ -40,7 +40,7 @@ bool Search(BstNode* root, float toSearch) {
     return Search(root->left, toSearch) || Search(root->right, toSearch);
 }
 
-void print_InOrder(BstNode* root) {
+void print_InOrder(BtNode* root) {
     if (root == NULL) {
         return;
     }
@@ -49,12 +49,12 @@ void print_InOrder(BstNode* root) {
     print_InOrder(root->right);
 }
 
-BstNode* predecessor = NULL;
-BstNode* successor = NULL;
-BstNode* prevNode = NULL;
+BtNode* predecessor = NULL;
+BtNode* successor = NULL;
+BtNode* prevNode = NULL;
 
 
-void findPredecessorAndSuccessor(BstNode* root, float target) {
+void findPredecessorAndSuccessor(BtNode* root, float target) {
     if (root == NULL) {
         return;
     }
@@ -90,7 +90,7 @@ void displayPredecessorAndSuccessor() {
 }
 
 int main() {
-    BstNode *root = NULL;
+    BtNode *root = NULL;
     root = Insert(root, 10);
     Insert(root, 20);
     Insert(root, 30);
