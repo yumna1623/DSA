@@ -57,9 +57,7 @@ void deleteMin() {
         int left = 2 * i + 1;
         int right = 2 * i + 2;
         int smallest = i;
-
-
-
+        
         if (left < heapSize && heap[left] < heap[smallest]) {
             smallest = left;
         }
@@ -77,7 +75,7 @@ void deleteMin() {
 }
 
 void printHeap() {
-    cout << "Max Heap: ";
+    cout << "Min Heap: ";
     for (int i = 0; i < heapSize; i++) {
         cout << heap[i] << " ";
     }
