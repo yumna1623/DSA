@@ -5,8 +5,6 @@
 
 
 
-
-
 // In a Min-Heap, the parent node is always smaller than or equal to its children.
 
 #include <iostream>
@@ -30,6 +28,7 @@ void insert() {
     heap[i] = key;
     heapSize++;
 
+    
     while (i > 0) {
         int parent = (i - 1) / 2;
         if (heap[i] < heap[parent]) {
