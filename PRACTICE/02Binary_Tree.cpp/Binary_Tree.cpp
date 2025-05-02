@@ -2,12 +2,12 @@
 using namespace std;
 
 struct BtNode {
-    float data;
+    int data;
     BtNode *left;
     BtNode *right;
 };
 
-BtNode* Insert(BtNode* root, float value) {
+BtNode* Insert(BtNode* root, int value) {
     if (root == NULL) {
         BtNode* newNode = new BtNode();
         newNode->data = value;
@@ -29,7 +29,7 @@ BtNode* Insert(BtNode* root, float value) {
     return root;
 }
 
-bool Search(BtNode* root, float toSearch) {
+bool Search(BtNode* root, int toSearch) {
     if (root == NULL) {
         return false;
     }
@@ -53,8 +53,23 @@ BtNode* predecessor = NULL;
 BtNode* successor = NULL;
 BtNode* prevNode = NULL;
 
+BtNode*MirriorTree(BtNode* root) {
+    if (root == NULL) {
+        return NULL;
+    }
 
-void findPredecessorAndSuccessor(BtNode* root, float target) {
+    // BstNode* temp = root->left;
+    // root->left = root->right;
+    // root->right = temp;
+    swap(root->left, root->right);
+
+    MirriorTree(root->left);
+    MirriorTree(root->right);
+
+    return root;
+}
+
+void findPredecessorAndSuccessor(BtNode* root, int target) {
     if (root == NULL) {
         return;
     }
@@ -62,16 +77,15 @@ void findPredecessorAndSuccessor(BtNode* root, float target) {
     findPredecessorAndSuccessor(root->left, target);
 
     if (root->data == target) {
-        if (prevNode != NULL) {
-            predecessor = prevNode;
-        }
-
-        if (root->right != NULL) {
-            successor = root->right;
-        }
+        predecessor = prevNode;
+    }
+    if (prevNode != NULL && prevNode->data == target && successor == NULL) {
+        successor = root;
     }
 
     prevNode = root;
+
+    
     findPredecessorAndSuccessor(root->right, target);
 }
 
@@ -89,24 +103,60 @@ void displayPredecessorAndSuccessor() {
     }
 }
 
+
+int  BtreeHeight(BtNode* root) {
+    if (root == NULL) {
+        return 0;
+    }
+    return max(BtreeHeight(root->left), BtreeHeight(root->right)) + 1;
+}
+
+int Level(BtNode* root, int data, int level) {
+    if (root == NULL) {
+        return 0;
+    }
+    if (root->data == data) {
+        return level;
+    }
+
+    int downlevel = Level(root->left, data, level + 1);
+    if (downlevel != 0) {
+        return downlevel;
+    }
+
+    downlevel = Level(root->right, data, level + 1);
+    return downlevel;
+}
+
 int main() {
     BtNode *root = NULL;
-    root = Insert(root, 10);
-    Insert(root, 20);
-    Insert(root, 30);
-    Insert(root, 5);
-    Insert(root, 15);
-    Insert(root, 25);
+    
+
+    root = Insert(root,1);
+     Insert(root,2);
+     Insert(root,3);
+
 
     cout << "InOrder Traversal: ";
     print_InOrder(root);
     cout << endl;
 
-    float target;
+    int target;
     cout << "Enter value to find predecessor and successor: ";
     cin >> target;
 
     findPredecessorAndSuccessor(root, target);
     displayPredecessorAndSuccessor();
+
+    cout<<"Height of the tree: " << BtreeHeight(root) << endl;
+
+    cout << "Level of " << target << ": " << Level(root, target, 1) << endl;
+
+    cout<<"Mirror Image of the tree is: ";
+    MirriorTree(root);
+    print_InOrder(root);
+
+
+
 
 }
