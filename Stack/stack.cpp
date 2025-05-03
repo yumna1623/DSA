@@ -11,8 +11,16 @@ Node *top = NULL;
 
 bool isempty()
 {
-    return top == NULL;
-}
+    if(top == NULL)
+    {
+        cout << "the stack is empty";
+        return true;
+    }
+    else
+    {
+        cout << "the stack is not empty";
+        return false;
+    
 void push()
 {
     Node *ptr = (Node *)(malloc(sizeof(Node)));

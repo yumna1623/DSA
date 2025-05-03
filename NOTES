@@ -1,18 +1,45 @@
-BUBBLE SORT:
-    Compare the first pair of adjacent elements in the array.
+# BUBBLE SORT:
+#     Compare the first pair of adjacent elements in the array.
 
-Selection Sort:
-    the algorithm finds the smallest element in the unsorted portion of the array and swaps it with the first unsorted element. The swapping happens once per iteration of the outer loop.
+# Selection Sort:
+#     the algorithm finds the smallest element in the unsorted portion of the array and swaps it with the first unsorted element. The swapping happens once per iteration of the outer loop.
 
-insertion Sort:
-    start with the first element as sorted. Then, take the next element and insert it into the sorted portion of the array. The process continues until the entire array is sorted.
+# insertion Sort:
+#     start with the first element as sorted. Then, take the next element and insert it into the sorted portion of the array. The process continues until the entire array is sorted.
 
-Quick Sort:
-    Select a 'pivot' element from the array and partition the other elements into two sub-arrays , according to whether they are less than or greater than the pivot. The sub-arrays are  then recursively sorted.
+# Quick Sort:
+#     Select a 'pivot' element from the array and partition the other elements into two sub-arrays , according to whether they are less than or greater than the pivot. The sub-arrays are  then recursively sorted.
 
-in-order traversal:
-    (Left → Node → Right)
+# in-order traversal:
+#     (Left → Node → Right)
     
 
-InOrder of BST:
-    SORTED
+# InOrder of BST:
+#     SORTED
+
+# COMPLETE BINARY TREE:
+#  if single child its missing then its not complete binary tree.
+
+# HEIGHT 
+# longest path covered by the node from root to leaf node.
+
+# LEVEL:
+#     number of edges in the longest path from the root to a leaf node.
+
+# SUCESSOR:
+# in right of the node if it has right child then its leftmost child of right subtree.
+
+# PREDECESSOR:
+# in left of the node if it has left child then its rightmost child of left subtree.
+
+    #   1
+    #  / \
+    # 2   3
+# level 0: 1
+# level 1: 2,3
+
+# height of the tree: start from 0
+
+
+# reset filter 
+# search

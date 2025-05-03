@@ -128,35 +128,56 @@ int Level(BtNode* root, int data, int level) {
     return downlevel;
 }
 
+bool isBinaryTree(BtNode* root) {
+    if (root == NULL) {
+        return true;
+    }
+
+    // // if (root->left != NULL && root->left->data > root->data) {
+    // if (root->left != NULL ) {
+    //     return false;
+    // }
+    // // if (root->right != NULL && root->right->data < root->data) {
+    // if (root->right != NULL ) {
+    //     return false;
+    
+
+    return isBinaryTree(root->left) && isBinaryTree(root->right);
+}
+
 int main() {
     BtNode *root = NULL;
     
 
     root = Insert(root,1);
      Insert(root,2);
-     Insert(root,3);
+    Insert(root,3);
+     
 
 
     cout << "InOrder Traversal: ";
     print_InOrder(root);
     cout << endl;
 
-    int target;
-    cout << "Enter value to find predecessor and successor: ";
-    cin >> target;
+    isBinaryTree(root) ? cout << "This is a Binary Tree.\n" : cout << "This is not a Binary Tree.\n";
 
-    findPredecessorAndSuccessor(root, target);
-    displayPredecessorAndSuccessor();
+    // int target;
+    // cout << "Enter value to find predecessor and successor: ";
+    // cin >> target;
 
-    cout<<"Height of the tree: " << BtreeHeight(root) << endl;
+    // findPredecessorAndSuccessor(root, target);
+    // displayPredecessorAndSuccessor();
 
-    cout << "Level of " << target << ": " << Level(root, target, 1) << endl;
+    // cout<<"Height of the tree: " << BtreeHeight(root) << endl;
 
-    cout<<"Mirror Image of the tree is: ";
-    MirriorTree(root);
-    print_InOrder(root);
+    // cout << "Level of " << target << ": " << Level(root, target, 1) << endl;
+
+    // cout<<"Mirror Image of the tree is: ";
+    // MirriorTree(root);
+    // print_InOrder(root);
 
 
 
 
 }
+    

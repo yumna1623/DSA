@@ -38,6 +38,36 @@ void insertTask() {
     }
 }
 
+void DeleteMin() {
+    if (heapSize == 0) {
+        cout << "Heap is empty. Cannot delete." << endl;
+        return;
+    }
+
+    heap[0] = heap[heapSize - 1];
+    heapSize--;
+
+    int i = 0;
+    while (i < heapSize) {
+        int leftChild = 2 * i + 1;
+        int rightChild = 2 * i + 2;
+        int smallest = i;
+
+        if (leftChild < heapSize && heap[leftChild].priority < heap[smallest].priority) {
+            smallest = leftChild;
+        }
+        if (rightChild < heapSize && heap[rightChild].priority < heap[smallest].priority) {
+            smallest = rightChild;
+        }
+        if (smallest != i) {
+            swap(heap[i], heap[smallest]);
+            i = smallest;
+        } else {
+            break;
+        }
+    }
+}
+
 
 void printHeap() {
     cout << "Min Heap (Tasks): ";
@@ -57,5 +87,7 @@ int main() {
     }
 
     printHeap();
+    DeleteMin();
+    cout << "After deleting the task with the highest priority:" << endl;
+    printHeap();
 }
- 
