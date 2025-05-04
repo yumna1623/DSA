@@ -1,3 +1,5 @@
+//merging 2 linked list and sorting them
+
 #include <iostream>
 #include <malloc.h>
 using namespace std;
@@ -34,40 +36,88 @@ void print(Node *head) {
     cout << endl;
 }
 
-Node* Merge(Node *head1, Node *head2) {
-    if (head1 == NULL) return head2;
-    if (head2 == NULL) return head1;
+Node *Merge(Node *Root1, Node *Root2)
+{
+    Node *Root3 = NULL;
+    Node *current1 = Root1;
 
-    Node *head3 = NULL, *ptr = NULL;
-
-    if (head1->data < head2->data) {
-        head3 = head1;
-        head1 = head1->next;
-    } else {
-        head3 = head2;
-        head2 = head2->next;
-    }
-    ptr = head3;
-
-    while (head1 != NULL && head2 != NULL) {
-        if (head1->data < head2->data) {
-            ptr->next = head1;
-            head1 = head1->next;
-        } else {
-            ptr->next = head2;
-            head2 = head2->next;
+    while (current1 != NULL)
+    {
+        Node *ptr = new Node();
+        ptr->data = current1->data;
+        ptr->next = NULL;
+        if (Root3 == NULL)
+        {
+            Root3 = ptr;
         }
-        ptr = ptr->next;
+        else
+        {
+            Node *temp = Root3;
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            temp->next = ptr;
+        }
+        current1 = current1->next;
     }
 
-    if (head1 == NULL)
-        ptr->next = head2;
-    else
-        ptr->next = head1;
+    Node *current2 = Root2;
 
-    return head3;
+    while (current2 != NULL)
+    {
+
+        Node *ptr = new Node();
+        ptr->data = current2->data;
+        ptr->next = NULL;
+
+        if (Root3 == NULL)
+        {
+            Root3 = ptr;
+        }
+        else
+        {
+            Node *temp = Root3;
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            temp->next = ptr;
+        }
+
+        current2 = current2->next;
+    }
+
+    return Root3;
 }
+Node *Sort(Node *Root)
+{
+    Node *sorted = NULL;
+    Node *current = Root;
 
+    while (current != NULL)
+    {
+        Node *next = current->next;
+        if (sorted == NULL || sorted->data >= current->data)
+        {
+            current->next = sorted;
+            sorted = current;
+        }
+        else
+        {
+            Node *temp = sorted;
+            while (temp->next != NULL && temp->next->data < current->data)
+            {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+        current = next;
+    }
+
+    return sorted;
+}
 int main() {
     int num1, num2;
     cout << "Enter 1st LinkedList size: ";
@@ -92,5 +142,6 @@ int main() {
 
     cout << "Merged LinkedList: \n";
     Node *head3 = Merge(head1, head2);
+    head3 = Sort(head3);
     print(head3);
 }

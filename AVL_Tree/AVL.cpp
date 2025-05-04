@@ -8,6 +8,7 @@ struct Node {
     int height;
 };
 
+
 // Utility to get height of the node
 int getHeight(Node* node) {
     return node ? node->height : 0;
@@ -71,7 +72,7 @@ Node* insert(Node* node, int key) {
     else if (key > node->data)
         node->right = insert(node->right, key);
     else
-        return node; // Duplicate keys not allowed
+        return node; 
 
     // Update height
     node->height = 1 + max(getHeight(node->left), getHeight(node->right));
@@ -89,7 +90,6 @@ Node* insert(Node* node, int key) {
         node->right = rightRotate(node->right);
         return leftRotate(node);
     }
-
     return node;
 }
 
@@ -114,9 +114,23 @@ int main() {
         cin >> value;
         root = insert(root, value);
     }
-
     cout << "\nInorder Traversal of AVL Tree: ";
     inorder(root);
     cout << endl;
-
 }
+
+// directed 
+// undirected
+
+// weighted 
+// unweighted
+
+// traversal
+// bfs
+// dfs 
+// cycle detection
+// shortest path
+
+
+
+

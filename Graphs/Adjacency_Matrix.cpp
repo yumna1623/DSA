@@ -1,4 +1,6 @@
 #include <iostream>
+#include <queue>
+
 using namespace std;
 
 const int MAX_VERTICES = 20;
@@ -6,7 +8,6 @@ int graph[MAX_VERTICES][MAX_VERTICES] = {0};
 int vertices, edgeCount = 0;
 bool isDirected;
 
-// Insert edge
 void insertEdge(int v1, int v2) {
     if (v1 >= 0 && v1 < vertices && v2 >= 0 && v2 < vertices) {
         if (graph[v1][v2] == 0) {
@@ -21,7 +22,6 @@ void insertEdge(int v1, int v2) {
     }
 }
 
-// Display adjacency matrix
 void displayMatrix() {
     cout << "\nAdjacency Matrix:\n    ";
     for (int i = 0; i < vertices; i++) cout << i << " ";
@@ -58,8 +58,8 @@ void calculateDegrees() {
     }
 }
 
-// Find path using manual stack
-void findPath(int start, int end) {
+//  using manual stack
+void findPathusingDFS(int start, int end) {
     bool visited[MAX_VERTICES] = {false};
     int stack[MAX_VERTICES], top = -1;
 
@@ -77,6 +77,34 @@ void findPath(int start, int end) {
                 if (graph[current][i] && !visited[i]) {
                     stack[++top] = i;
                 }
+            }
+        }
+    }
+    cout << "No path exists from " << start << " to " << end << ".\n";
+}
+
+
+
+void findPathBFS(int start, int end) {
+    bool visited[MAX_VERTICES] = {false};
+    queue<int> q;
+
+    q.push(start);
+    visited[start] = true;
+
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+
+        if (current == end) {
+            cout << "Path exists from " << start << " to " << end << "!\n";
+            return;
+        }
+
+        for (int i = 0; i < vertices; i++) {
+            if (graph[current][i] && !visited[i]) {
+                q.push(i);
+                visited[i] = true;
             }
         }
     }
@@ -127,7 +155,7 @@ int main() {
                 int start, end;
                 cout << "Enter start and end vertex: ";
                 cin >> start >> end;
-                findPath(start, end);
+                findPathusingDFS(start, end);
                 break;
             }
             case 0:
