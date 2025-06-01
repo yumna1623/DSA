@@ -1,0 +1,11 @@
+[
+
+    { "day": 2, "month": 6, "event": "Project Day" },
+    { "day": 14, "month": 8, "event": "Independence Day" },
+    { "day": 23, "month": 3, "event": "Pakistan Day" },
+    { "day": 25, "month": 12, "event": "Quaid-e-Azam Day" },
+    { "day": 1, "month": 7, "event": "New Fiscal Year" },
+    { "day": 21, "month": 6, "event": "Summer Solstice" },
+    { "day": 1, "month": 4, "event": "Eid ul Fitr 2025" },
+    { "day": 6, "month": 6, "event": "Eid ul Azha 2025" }
+]

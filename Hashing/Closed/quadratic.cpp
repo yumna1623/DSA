@@ -14,7 +14,7 @@ void insert(int size, int array[])
     int i = 1;
     if (array[index] == -1)
     {
-        
+
         array[index] = key;
     }
     else if (array[index] != -1)
@@ -112,6 +112,4 @@ int main()
     {
         Search(size, array);
     }
-    
-
 }

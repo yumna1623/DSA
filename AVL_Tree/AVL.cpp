@@ -63,6 +63,7 @@ int getBalance(Node* node) {
 
 // Insert a node
 Node* insert(Node* node, int key) {
+    
     if(node == NULL){
         return createNode(key);
     }
@@ -103,7 +104,7 @@ void inorder(Node* root) {
 }
 
 int main() {
-    Node* root = nullptr;
+    Node* root = NULL;
 
     int n, value;
     cout << "Enter number of nodes to insert: ";

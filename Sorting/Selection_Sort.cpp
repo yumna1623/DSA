@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
 void selectionSort(){
@@ -13,9 +14,10 @@ void selectionSort(){
                 min = j;
         }
     }
-    int temp = arr[i];
-    arr[i] = arr[min];
-    arr[min] = temp;
+    swap(arr[i],arr[min]);
+    // int temp = arr[i];
+    // arr[i] = arr[min];
+    // arr[min] = temp;
 }
     for(int i=0; i<5; i++){
         cout<<arr[i]<<" ";

@@ -20,7 +20,8 @@ bool isempty()
     {
         cout << "the stack is not empty";
         return false;
-    
+    }
+}
 void push()
 {
     Node *ptr = (Node *)(malloc(sizeof(Node)));
@@ -61,7 +62,6 @@ int peek()
     }
 }
 
-bool isfull() { return false; }
 
 void print() 
 {
