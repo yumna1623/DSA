@@ -43,7 +43,26 @@ WE USED CONSOLE / CLI /SDKK  TO CONTROL AWS
 -> DEVSTACK
 -> OPEN BAITHAK
 -> NOVA LIKE EC2  IN OPENN  STACK
--> 
+
+
+
+---------------------------------------- OPEN STACK -----------------------
+well createvm using nova
+keystone = user creation and password management
+        =show analytics
+horizon = ui like console
+neutron service like networking
+glance =will create image ,  images will be installed through this
+glancewilll use in nova to create vm
+swift = objectstorage 
+cinder = block storage
+nova = ec2
+
+microstack is an application by ubuntu for using open stack
+devstack is by open stack
+
+
+
 
 
 
