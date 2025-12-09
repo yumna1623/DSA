@@ -47,6 +47,11 @@ WE USED CONSOLE / CLI /SDKK  TO CONTROL AWS
 
 
 ---------------------------------------- OPEN STACK -----------------------
+
+inn ubuntu install 
+install open stack 
+sudo snap get microstacck  config.credentials..keystsone-password
+
 well createvm using nova
 keystone = user creation and password management
         =show analytics
@@ -60,6 +65,8 @@ nova = ec2
 
 microstack is an application by ubuntu for using open stack
 devstack is by open stack
+
+
 
 
 
