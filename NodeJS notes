@@ -1,0 +1,169 @@
+collection = files
+data/document/records 
+
+// Show all existing databases
+show dbs
+
+// Switch to a new database or create it if it doesn't exist
+use newDatabaseName
+
+// Create new collections inside the current database
+db.createCollection("Students")
+db.createCollection("personal")
+
+// Show all collections in the current database
+show collections
+
+// Insert a single document into the 'Students' collection
+db.Students.insertOne({
+  "name": "John Doe",        // Student's name
+  "age": 22,                 // Student's age
+  "course": "Computer Science" // Student's enrolled course
+})
+
+// Insert another document with more fields
+db.Students.insertOne({
+  "name": "Alice",
+  "age": 20,
+  "course": "Mathematics",
+  "enrolled": true           // Boolean field showing if student is enrolled
+})
+
+// Insert multiple documents at once into 'Students' collection
+db.Students.insertMany([
+
+  { "name": "Bob", "age": 23 },
+  { "name": "Carol", "age": 21 }
+
+])
+
+// Query all documents inside the 'Students' collection
+db.Students.find()
+
+json schema validation
+
+db.createCollection("Studnets" , {
+    
+    validator: {
+        $jsonSchema: {
+            required: ["name", "age"],title: "Student validation",
+            properties: {
+                name: {
+                    bsonType : "string",
+                    enum:["ifrah"] //means name should be ifrah predefined values
+                    description: "must be a string and is required"
+                },
+                age: {
+                    bsonType: "int",
+                    minimum:5,
+                    maximum:20,
+                    description: "age must be an integer between 5 and 20"
+                }
+            }
+        }
+    }
+})
+// ---------------------------------------------------------------------------------------
+// modify an existing command
+
+db.runCommand( {
+    colMod:"Students",
+    validator: {
+        $jsonSchema: {
+            required: ["name", "age"],title: "Student validation",
+            properties: {
+                name: {
+                    bsonType : "string",
+                    description: "must be a string and is required"
+                },
+                age: {
+                    bsonType: "int",
+                    minimum:5,
+                    maximum:20,
+                    description: "age must be an integer between 5 and 20"
+                }
+                
+            }
+        }
+    }
+})
+// ---------------------------------------------------------------------------------------
+// UPDATE COMMAND
+
+db.collection.updateOne(
+{field:"value"},
+{$set:{updated_field:"new_Value"}}
+
+)
+
+db.Students.updateOne(
+{name:"ambar"},
+{$set:{age:19}} //if ambar have age 20 it will update to 19
+
+)
+
+db.Students.updateOne(  //it means it will update the very first on having CS
+    {course: "CS"}
+    {$set :{age:19}}
+)
+
+db.Students.updateMany(
+    {course : "CS"},	
+    {$set : {age:17}}
+)
+
+db.students.updateOne({name:"Ahnaf"},{$push:{"skills":"Bootstrap5"}})
+//Finds one document where name is "Ahnaf" and pushes "Bootstrap5" 
+// to the skills array (even if it’s already there).
+//will only work for array and not for strings like "html" , "css"
+
+db.students.updateOne({ name: "Ahnaf" }, { $pop: { skills: 1 } })
+// 👉 Removes the last element from the skills array.
+// 1 → remove last
+// -1 → remove first
+// Before → ["HTML", "CSS", "Bootstrap5"]
+// After → ["HTML", "CSS"]
+
+db.students.updateOne({name:"Ahnaf"},{$addToSet:{"skills":"Bootstrap5"}})
+// Adds an item to an array only if it’s not already there.
+// 👉 Looks for one document where name is "Ahnaf"
+// 👉 Adds "Bootstrap5" to the skills array only if it’s not already present (prevents duplicates).
+// If skills = ["HTML", "CSS"] → after this: ["HTML", "CSS", "Bootstrap5"]
+db.students.updateOne({ name: "Ahnaf" }, { $pull: { skills: "Bootstrap5" } })
+// 👉 Removes all occurrences of "Bootstrap5" from the skills array.
+// Example:
+// Before → ["HTML", "Bootstrap5", "Bootstrap5"]
+// After → ["HTML"]
+db.students.updateMany({ age: 19 }, { $currentDate: { date: true } })
+db.students.updateOne({ name: "Ahnaf" }, { $rename: { skills: "lang_skills" } })
+// 👉 Renames the field skills to lang_skills.
+
+
+db.collection_name.replaceOne(
+{field:"value"},
+{$set:{"new_field":"new_value"}}
+)
+
+
+db.collection_name.deleteOne({field:"value"})
+db.students.deleteOne({ age: 21 })
+// 👉 Deletes one document where course = 'CS'.
+// $unset: Removes the field from the document.
+// $inc: Increaments the field value
+// $mul: Multiplies the field value
+db.students.deleteMany({ age: 21 })
+db.students.deleteMany({})
+
+
+db.students.findOne({name: 'yumna '})
+
+db.students.find({ age: 18 }, { name: 1, age: 1, _id: 0 })
+// 👉 Find all students in class 'CS'
+// 👉 Return only name and age fields, exclude _id.
+
+db.students.find().count()
+
+db.students.find().sort({name:1}) //ascending  order 
+db.students.find().sort({name:1}).limit(2)
+db.students.find().limit(2).skip(2) //will skip 2
+db.students.find().sort({name:1}).limit(1).skip(1) 
