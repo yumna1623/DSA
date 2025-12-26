@@ -75,7 +75,7 @@ devstack is by open stack
 Node in cloud architecture is means one service is running on that 
 ebs = block storage
 
-
+floating ip =temporary connection if you needdirect connection
 
 
 
